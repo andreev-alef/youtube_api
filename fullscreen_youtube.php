@@ -25,7 +25,6 @@ and open the template in the editor.
         </p>
 
         <!-- Видео из google-диска! -->
-
         <p><button onclick="document.querySelector('iframe[src=&quot;https://drive.google.com/file/d/____идентификатор_видео____/preview&quot;]').requestFullscreen();">
                 ВИДЕО ВО ВЕСЬ ЭКРАН
             </button>
