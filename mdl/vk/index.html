@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Видео из ВК во весь экран</title>
+        <link href="../../bs/css/bootstrap.min.css" type="text/css"  rel="stylesheet"/>
+        <script src="../../bs/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <p style="text-align: center">
+            <button onclick="getVKvideoID()" style="color: #00a300; font-weight: bold; font-family: monospace; font-size: 20pt">
+                Получить код fullscreen ВК-видео
+            </button>
+        </p>
+        <p id="okBox" style="color: #00a300; font-weight: bold; font-family: monospace; font-size: 20pt; text-align: center"></p>
+        <div id="fullscreenBox"></div>
+
+        <script>
+            function getVKvideoID() {
+                //var VKiframeCode = '<iframe src="https://vk.com/video_ext.php?oid=-212927193&id=456239030&hash=7e5b42bd52b9d792" width="640" height="360" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>';
+
+                navigator.clipboard.readText()
+                        .then(text => {
+                            var VKiframeCode = text;
+                            var shablon = text.match(/(oid\=)(.*?)(\")/);
+                            console.log(shablon);
+                            var VKvideoID = shablon[2];
+                            var fullscreenCode = '<p><button onclick="document.querySelector(\'iframe[src=&quot;https://vk.com/video_ext.php?oid=' + VKvideoID + '&quot;]\').requestFullscreen();">ВИДЕО ВО ВЕСЬ ЭКРАН</button></p>';
+                            document.getElementById('fullscreenBox').innerHTML = fullscreenCode + VKiframeCode;
+                            document.getElementById('okBox').innerHTML = 'Код успешно скопирован в буфер обмена';
+                            navigator.clipboard.writeText(fullscreenCode + VKiframeCode);
+                            console.log(fullscreenCode);
+                        })
+                        .catch(err => {
+                            console.log('Something went wrong', err);
+                        });
+
+                return;
+            }
+        </script>
+    </body>
+</html>
