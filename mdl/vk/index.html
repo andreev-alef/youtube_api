@@ -8,7 +8,7 @@
     </head>
     <body>
         <p style="text-align: center">
-            <button onclick="getVKvideoID()" style="color: #00a300; font-weight: bold; font-family: monospace; font-size: 20pt">
+            <button onclick="getVKvideoID()" class="btn btn-outline-success" style="font-weight: bold; font-family: monospace; font-size: 20pt; margin-top: 10px;">
                 Получить код fullscreen ВК-видео
             </button>
         </p>
@@ -26,9 +26,10 @@
                             console.log(shablon);
                             var VKvideoID = shablon[2];
                             var fullscreenCode = '<p><button onclick="document.querySelector(\'iframe[src=&quot;https://vk.com/video_ext.php?oid=' + VKvideoID + '&quot;]\').requestFullscreen();">ВИДЕО ВО ВЕСЬ ЭКРАН</button></p>';
+                            var innerCode = fullscreenCode + VKiframeCode;
                             document.getElementById('fullscreenBox').innerHTML = fullscreenCode + VKiframeCode;
                             document.getElementById('okBox').innerHTML = 'Код успешно скопирован в буфер обмена';
-                            navigator.clipboard.writeText(fullscreenCode + VKiframeCode);
+                            navigator.clipboard.writeText(innerCode);
                             console.log(fullscreenCode);
                         })
                         .catch(err => {
