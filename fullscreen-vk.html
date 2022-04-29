@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="./jquery-3.6.0.min.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <!-- Видео из VK -->
+        <p>
+            <button onclick="document.querySelector('iframe[src=&quot;https://vk.com/video_ext.php?oid=____идентификатор_видео____&quot;]').requestFullscreen();">
+                ВИДЕО ВО ВЕСЬ ЭКРАН
+            </button>
+        </p>
+
+        <p><button onclick="document.querySelector('iframe[src=&quot;https://vk.com/video_ext.php?oid=____идентификатор_видео____&quot;]').requestFullscreen();">ВИДЕО ВО ВЕСЬ ЭКРАН</button></p>
+        <p>
+            <button onclick="getVKvideoID()">
+                КОД ВК-видео
+            </button>
+        </p>
+        <div id="fullscreenBox"></div>
+
+        <script type="text/javascript">
+            function getVKvideoID() {
+                var VKiframeCode = '<iframe src="https://vk.com/video_ext.php?oid=-212927193&id=456239030&hash=7e5b42bd52b9d792" width="640" height="360" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>';
+                var shablon = VKiframeCode.match(/(oid\=)(.*?)(\")/);
+                var VKvideoID = shablon[2];
+                var fullscreenCode = '<p><button onclick="document.querySelector(\'iframe[src=&quot;https://vk.com/video_ext.php?oid=' + VKvideoID + '&quot;]\').requestFullscreen();">ВИДЕО ВО ВЕСЬ ЭКРАН</button></p>';
+                //document.getElementById('fullscreenBox').innerHTML = fullscreenCode + VKiframeCode;
+                navigator.clipboard.writeText(fullscreenCode + VKiframeCode);
+                console.log(shablon[2]);
+                console.log(fullscreenCode);
+                return;
+            }
+        </script>
+    </body>
+</html>

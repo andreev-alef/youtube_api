@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Fwullscreen VK</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+<!--        <p>
+            <button onclick="document.querySelector('iframe[src=&quot;https://vk.com/video_ext.php?oid=____идентификатор_видео____&quot;]').requestFullscreen();">
+                ВИДЕО ВО ВЕСЬ ЭКРАН
+            </button>
+        </p>-->
+
+        <textarea id="embed_video_code" style="width: 1000px; height: 150px; visibility: visible"><p><button onclick="document.querySelector('iframe[src=&quot;https://vk.com/video_ext.php?oid=____идентификатор_видео____&quot;]').requestFullscreen();">ВИДЕО ВО ВЕСЬ ЭКРАН</button></p></textarea>
+        <p>
+            <button onclick="getVideoplayerCode();">
+                Скопировать код FullScreen
+            </button>
+        </p>
+        <script type="text/javascript">
+            function getVideoplayerCode() {
+                navigator.clipboard.writeText(document.getElementById('embed_video_code').value);
+                return;
+            }
+        </script>
+    </body>
+</html>
